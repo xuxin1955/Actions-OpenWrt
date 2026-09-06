@@ -187,6 +187,15 @@ jobs:
       run: |
         cd openwrt
         make defconfig V=s
+        
+        
+    - name: Cache ccache
+      uses: actions/cache@v5
+      with:
+        path: /mnt/openwrt/.ccache
+        key: ccache-${{ runner.os }}-msm8916-${{ github.sha }}
+        restore-keys: |
+          ccache-${{ runner.os }}-msm8916-
 
        
     - name: 查看 openwrt 目录
