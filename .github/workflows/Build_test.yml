@@ -7,7 +7,6 @@ on:
 
 
 env:
-  CONFIG_FILE: 'config/jz02v10.config'
   REPO_URL: https://github.com/xuxin1955/immortalwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
@@ -126,7 +125,7 @@ jobs:
         
     - name: Load custom DIY_P2_SH
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
