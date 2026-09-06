@@ -290,9 +290,14 @@ jobs:
       if: steps.organize.outputs.status == 'success'
       run: |
         cd ${{ env.FIRMWARE }}
-        for f in config.buildinfo feeds.buildinfo profiles.json sha256sums version.buildinfo; do
-          [ -f "$f" ] && mv "$f" "${{ matrix.device }}-$f"
-        done
+
+        if [ "${{ matrix.device }}" != "jz02v10" ]; then
+          rm -f config.buildinfo \
+                feeds.buildinfo \
+                profiles.json \
+                sha256sums \
+                version.buildinfo
+        fi
       shell: bash
 
     - name: Upload firmware directory
