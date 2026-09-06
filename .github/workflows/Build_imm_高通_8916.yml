@@ -241,6 +241,10 @@ jobs:
       id: compile
       run: |
         cd openwrt
+        
+        ccache --zero-stats
+        ccache --show-stats
+        
         echo -e "$(nproc) thread compile"
 
         set +e
